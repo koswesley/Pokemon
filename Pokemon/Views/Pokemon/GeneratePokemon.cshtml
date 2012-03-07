@@ -1,0 +1,35 @@
+﻿@model Pokemon.Models.GeneratedPokemon
+
+<html>
+    <div class="span2">
+        <form id="creationForm" method="post" action="">
+            Name:
+            <input class='required input-small' id="name" data-bind='value: Name, uniqueName: true' /><br />
+            Lvl:
+            <input class='required input-small' id="lvl" data-bind='value: Lvl, uniqueName: true' />
+        </form>
+        <button data-bind="click: generatePokemon">
+        Submit</button>
+    </div>
+    <div class="span10">
+        
+    </div>
+
+<script type="text/javascript">
+    function CreatedPokemonViewModel() {
+       this.pokemonModel = @Html.Raw(Json.Encode(Model));
+       this.generatePokemon = function () {
+           var test = ko.toJSON(this.pokemonModel);
+           $.ajax({
+                type: "POST",
+                url: "/Pokemon/CreatePokemon",
+                data: test,
+                dataType: "json",
+                contentType: "application/json charset=utf-8"
+            });
+            return true;
+       }
+    }   
+    ko.applyBindings(new CreatedPokemonViewModel());
+</script>
+</html>

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Pokemon.Models.PokemonBase>
+<html>
+<head>
+    <script type="text/javascript">
+    $(document.ready(function() {
+        $('#baseForm').validate({
+            errorLabelContainer: $('#Errors')
+        });
+    });
+    </script>
+    <title>Base Pokemon</title>
+</head>
+<body>
+    <select data-bind="options: pokemonModel,
+                       optionsCaption: 'Choose...',
+                       optionsText: 'Name',
+                       value: chosenPokemon">
+    </select>
+    <form data-bind="with: chosenPokemon" id="baseForm" method="post" action="">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8">
+            </div>
+            PokemonId: <span id="pokemonId" data-bind="text: PokemonId"></span>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+            </div>
+            Name:
+            <input class='required input-small' id="name" name="name" data-bind='value: Name, uniqueName: true' />
+            Evolution Level:
+            <input class='required number input-small' id="EvoLevel" data-bind="value: EvoLevel, uniqueName: true" />
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8">
+            Ability 1:
+            <input class='required input-small' data-bind="value: AbilityOne, uniqueName: true" />
+            Ability 2:
+            <input class='required input-small' data-bind="value: AbilityTwo, uniqueName: true" />
+            Abiltiy 3:
+            <input class='required input-small' data-bind="value: AbilityThree, uniqueName: true" />
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8">
+            Primary Type:
+            <input class='required input-small' data-bind="value: PrimaryType, uniqueName: true" />
+            Subtype:
+            <input class='required input-small' data-bind="value: SubType, uniqueName: true" />
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            HP Stat:
+            <input class='required number input-mini' data-bind="value: HPStat, uniqueName: true" />
+        </div>
+        <div class="span2">
+            Speed Stat:
+            <input class='required number input-mini' data-bind="value: SpeedStat, uniqueName: true" />
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            Attack Stat:
+            <input class='required number input-mini' data-bind="value: AttackStat, uniqueName: true" />
+        </div>
+        <div class="span2">
+            Sp Attack Stat:
+            <input class='required number input-mini' data-bind="value: SpAttackStat, uniqueName: true" />
+        </div>
+    </div>
+    <div class="row-fluid">
+    <div class="span2">
+    Defense Stat:
+    <input class='required number input-mini' data-bind="value: DefenseStat, uniqueName: true" />
+    </div>
+    <div class="span2">
+    Sp Defense Stat:
+    <input class='required number input-mini' data-bind="value: SpDefenseStat, uniqueName: true" />
+    </div>
+  </div>
+  <div class="row-fluid">
+    Male Gender Percent:
+    <input class='required number input-mini' data-bind="value: MaleGenderPercent, uniqueName: true" />
+    Level Speed:
+    <input class='required number input-mini' data-bind="value: LevelSpeed, uniqueName: true" />
+  </div>
+  <div class="row-fluid">
+    Base Exp:
+    <input class='required number input-mini' data-bind="value: BaseExp, uniqueName: true" />
+    Base Catch:
+    <input class='required number input-mini' data-bind="value: BaseCatch, uniqueName: true" />
+    </div>
+
+    </form>
+    <button data-bind="enable: chosenPokemon, click: savePokemon">
+        Submit</button>
+    <button data-bind="enable: chosenPokemon, click: resetPokemon">
+        Clear</button>
+    </div>
+    <script type="text/javascript">
+    function PokemonViewModel() {
+        this.pokemonModel = @Html.Raw(Json.Encode(Model));
+        this.chosenPokemon = ko.observable();
+        this.resetPokemon = function() { this.chosenPokemon(null) }
+        this.savePokemon = function() { 
+            var pkmn = ko.toJSON(this.chosenPokemon);
+            if(!$('form').valid()) {
+                $('form').showErrors();
+                return false;
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Pokemon/SaveBasePokemon", 
+                    data: pkmn, 
+                    dataType: "json",
+                    contentType: "application/json charset=utf-8"
+                });
+                return true;
+            }
+        }
+    }
+    ko.applyBindings(new PokemonViewModel());
+
+    $("form").validate({ submitHandler: PokemonViewModel });
+    </script>
+</body>
+</html>

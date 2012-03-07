@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PokemonDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PokemonDBModelStoreContainer">
+          <EntitySet Name="GeneratedPokemon" EntityType="PokemonDBModel.Store.GeneratedPokemon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PokemonBase" EntityType="PokemonDBModel.Store.PokemonBase" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="GeneratedPokemon">
+          <Key>
+            <PropertyRef Name="GeneratedPokemonId" />
+          </Key>
+          <Property Name="GeneratedPokemonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Lvl" Type="int" Nullable="false" />
+          <Property Name="GenAttackStat" Type="int" Nullable="false" />
+          <Property Name="GenDefenseStat" Type="int" Nullable="false" />
+          <Property Name="GenSpAttackStat" Type="int" Nullable="false" />
+          <Property Name="GenSpDefenseStat" Type="int" Nullable="false" />
+          <Property Name="GenSpeedStat" Type="int" Nullable="false" />
+          <Property Name="NatureOne" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NatureTwo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstEvolved" Type="int" />
+          <Property Name="SecondEvolved" Type="int" />
+          <Property Name="Shined" Type="bit" Nullable="false" />
+          <Property Name="Ability" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CurrentExp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PokemonBase">
+          <Key>
+            <PropertyRef Name="PokemonId" />
+          </Key>
+          <Property Name="PokemonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="EvoLevel" Type="int" Nullable="false" />
+          <Property Name="AbilityOne" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AbilityTwo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AbilityThree" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MaleGenderPercent" Type="real" Nullable="false" />
+          <Property Name="PrimaryType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SubType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="HPStat" Type="int" Nullable="false" />
+          <Property Name="AttackStat" Type="int" Nullable="false" />
+          <Property Name="DefenseStat" Type="int" Nullable="false" />
+          <Property Name="SpAttackStat" Type="int" Nullable="false" />
+          <Property Name="SpDefenseStat" Type="int" Nullable="false" />
+          <Property Name="SpeedStat" Type="int" Nullable="false" />
+          <Property Name="LevelSpeed" Type="int" Nullable="false" />
+          <Property Name="BaseExp" Type="int" Nullable="false" />
+          <Property Name="BaseCatch" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PokemonDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PokemonDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PokemonBases" EntityType="PokemonDBModel.PokemonBase" />
+          <EntitySet Name="GeneratedPokemons" EntityType="PokemonDBModel.GeneratedPokemon" />
+        </EntityContainer>
+        <EntityType Name="PokemonBase">
+          <Key>
+            <PropertyRef Name="PokemonId" />
+          </Key>
+          <Property Name="PokemonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EvoLevel" Type="Int32" Nullable="false" />
+          <Property Name="AbilityOne" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AbilityTwo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AbilityThree" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MaleGenderPercent" Type="Single" Nullable="false" />
+          <Property Name="PrimaryType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SubType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="HPStat" Type="Int32" Nullable="false" />
+          <Property Name="AttackStat" Type="Int32" Nullable="false" />
+          <Property Name="DefenseStat" Type="Int32" Nullable="false" />
+          <Property Name="SpAttackStat" Type="Int32" Nullable="false" />
+          <Property Name="SpDefenseStat" Type="Int32" Nullable="false" />
+          <Property Name="SpeedStat" Type="Int32" Nullable="false" />
+          <Property Name="LevelSpeed" Type="Int32" Nullable="false" />
+          <Property Name="BaseExp" Type="Int32" Nullable="false" />
+          <Property Name="BaseCatch" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneratedPokemon">
+          <Key>
+            <PropertyRef Name="GeneratedPokemonId" />
+          </Key>
+          <Property Type="Int32" Name="GeneratedPokemonId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Lvl" Nullable="false" />
+          <Property Type="Int32" Name="GenAttackStat" Nullable="false" />
+          <Property Type="Int32" Name="GenDefenseStat" Nullable="false" />
+          <Property Type="Int32" Name="GenSpAttackStat" Nullable="false" />
+          <Property Type="Int32" Name="GenSpDefenseStat" Nullable="false" />
+          <Property Type="Int32" Name="GenSpeedStat" Nullable="false" />
+          <Property Type="String" Name="NatureOne" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NatureTwo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FirstEvolved" />
+          <Property Type="Int32" Name="SecondEvolved" />
+          <Property Type="Boolean" Name="Shined" Nullable="false" />
+          <Property Type="String" Name="Ability" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CurrentExp" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PokemonDBModelStoreContainer" CdmEntityContainer="PokemonDBEntities">
+          <EntitySetMapping Name="PokemonBases"><EntityTypeMapping TypeName="PokemonDBModel.PokemonBase"><MappingFragment StoreEntitySet="PokemonBase">
+            <ScalarProperty Name="PokemonId" ColumnName="PokemonId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="EvoLevel" ColumnName="EvoLevel" />
+            <ScalarProperty Name="AbilityOne" ColumnName="AbilityOne" />
+            <ScalarProperty Name="AbilityTwo" ColumnName="AbilityTwo" />
+            <ScalarProperty Name="AbilityThree" ColumnName="AbilityThree" />
+            <ScalarProperty Name="MaleGenderPercent" ColumnName="MaleGenderPercent" />
+            <ScalarProperty Name="PrimaryType" ColumnName="PrimaryType" />
+            <ScalarProperty Name="SubType" ColumnName="SubType" />
+            <ScalarProperty Name="HPStat" ColumnName="HPStat" />
+            <ScalarProperty Name="AttackStat" ColumnName="AttackStat" />
+            <ScalarProperty Name="DefenseStat" ColumnName="DefenseStat" />
+            <ScalarProperty Name="SpAttackStat" ColumnName="SpAttackStat" />
+            <ScalarProperty Name="SpDefenseStat" ColumnName="SpDefenseStat" />
+            <ScalarProperty Name="SpeedStat" ColumnName="SpeedStat" />
+            <ScalarProperty Name="LevelSpeed" ColumnName="LevelSpeed" />
+            <ScalarProperty Name="BaseExp" ColumnName="BaseExp" />
+            <ScalarProperty Name="BaseCatch" ColumnName="BaseCatch" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GeneratedPokemons">
+            <EntityTypeMapping TypeName="PokemonDBModel.GeneratedPokemon">
+              <MappingFragment StoreEntitySet="GeneratedPokemon">
+                <ScalarProperty Name="CurrentExp" ColumnName="CurrentExp" />
+                <ScalarProperty Name="Ability" ColumnName="Ability" />
+                <ScalarProperty Name="Shined" ColumnName="Shined" />
+                <ScalarProperty Name="SecondEvolved" ColumnName="SecondEvolved" />
+                <ScalarProperty Name="FirstEvolved" ColumnName="FirstEvolved" />
+                <ScalarProperty Name="NatureTwo" ColumnName="NatureTwo" />
+                <ScalarProperty Name="NatureOne" ColumnName="NatureOne" />
+                <ScalarProperty Name="GenSpeedStat" ColumnName="GenSpeedStat" />
+                <ScalarProperty Name="GenSpDefenseStat" ColumnName="GenSpDefenseStat" />
+                <ScalarProperty Name="GenSpAttackStat" ColumnName="GenSpAttackStat" />
+                <ScalarProperty Name="GenDefenseStat" ColumnName="GenDefenseStat" />
+                <ScalarProperty Name="GenAttackStat" ColumnName="GenAttackStat" />
+                <ScalarProperty Name="Lvl" ColumnName="Lvl" />
+                <ScalarProperty Name="GeneratedPokemonId" ColumnName="GeneratedPokemonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Pokemon" ZoomLevel="77">
+        <EntityTypeShape EntityType="PokemonDBModel.PokemonBase" Width="1.5" PointX="0.75" PointY="0.75" Height="4.480205078125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PokemonDBModel.GeneratedPokemon" Width="1.5" PointX="3.375" PointY="0.75" Height="3.7109993489583326" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
