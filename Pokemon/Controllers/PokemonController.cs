@@ -34,11 +34,12 @@ namespace Pokemon.Controllers
         [HttpPost]
         public void CreatePokemon(GeneratedPokemon generatedPokemon)
         {
-            generatedPokemon.
+            var i = 0;
+            ++i;
         }
 
         [HttpPost]
-        public void SaveBasePokemon(PokemonViewModel pokemonViewModel)
+        public ActionResult SaveBasePokemon(PokemonViewModel pokemonViewModel)
         {
             try
             {
@@ -48,6 +49,7 @@ namespace Pokemon.Controllers
             {
                 Console.WriteLine(ex.InnerException);
             }
+            return null;
         }
     }
 }

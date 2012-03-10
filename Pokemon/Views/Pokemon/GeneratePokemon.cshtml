@@ -2,14 +2,32 @@
 
 <html>
     <div class="span2">
-        <form id="creationForm" method="post" action="">
-            Name:
-            <input class='required input-small' id="name" data-bind='value: Name, uniqueName: true' /><br />
-            Lvl:
-            <input class='required input-small' id="lvl" data-bind='value: Lvl, uniqueName: true' />
+        <form data-bind="with: generatedPokemon" method="post" action="/Pokemon/CreatePokemon">
+            Lvl:<br />
+            <input class='number input-small' id="lvl" data-bind='value: Lvl, uniqueName: true' />
+            <br />Attack:
+            <input class='number input-small' id="attack" data-bind='value: GenAttackStat, uniqueName: true' />
+            <br />Defense:
+            <input class='number input-small' id="defense" data-bind='value: GenDefenseStat, uniqueName: true' />
+            <br />Sp Attack:
+            <input class='number input-small' id="spAttack" data-bind='value: GetSpAttackStat, uniqueName: true' />
+            <br />Sp Defense:
+            <input class='number input-small' id="spDefense" data-bind='value: GenSpDefenseStat, uniqueName: true' />
+            <br />Speed:
+            <input class='number input-small' id="speed" data-bind='value: GenSpeedStat, uniqueName: true' />
+            <br />First Evolution:
+            <input class='number input-small' id="1stEvo" data-bind='value: FirstEvloved, uniqueName: true' />
+            <br />Second Evolution:
+            <input class='number input-small' id="2ndEvo" data-bind='value: SecondEvolved, uniqueName: true' />
+            <br />Shined:&nbsp
+            <input type="radio" value="Yes" data-bind="checked:: Shined"/>Yes&nbsp
+            <input type="radio" value="No" data-bind="checked: Shined"/>No
+            <br />Ability:<br />
+            <input class='input-small' id="ability" data-bind='value: Ability, uniqueName: true' />
+            <br />CurrentExp:
+            <input class='number input-small' id="exp" data-bind='value: CurrentExp, uniqueName: true' />
         </form>
-        <button data-bind="click: generatePokemon">
-        Submit</button>
+        <button data-bind="click: generatePokemon">Generate</button>
     </div>
     <div class="span10">
         
@@ -17,13 +35,13 @@
 
 <script type="text/javascript">
     function CreatedPokemonViewModel() {
-       this.pokemonModel = @Html.Raw(Json.Encode(Model));
-       this.generatePokemon = function () {
-           var test = ko.toJSON(this.pokemonModel);
-           $.ajax({
+        this.generatedPokemon = ko.observable("");
+        this.generatePokemon = function (form) {
+            var pkmn = ko.toJSON(form);
+            $.ajax({
                 type: "POST",
                 url: "/Pokemon/CreatePokemon",
-                data: test,
+                data: pkmn,
                 dataType: "json",
                 contentType: "application/json charset=utf-8"
             });
